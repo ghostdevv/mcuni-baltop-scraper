@@ -6,7 +6,7 @@ compatibility_date = "2022-11-03"
 
 kv_namespaces = [
     { binding = "BALANCES", id = "ec7934e9c0ce45a3b9041eff64321fb0" },
-    { binding = "USERNAMES" }
+    { binding = "USERNAMES", id = "23d2abdfa9144310998acf53a85f0ebc" }
 ]
 
 [build]
