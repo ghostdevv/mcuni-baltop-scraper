@@ -16,5 +16,8 @@ format = "modules"
 main = "./index.mjs"
 dir = "build"
 
+[triggers]
+crons = ["*/30 * * * *"]
+
 [miniflare]
 kv_persist = true
