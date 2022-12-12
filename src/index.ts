@@ -1,5 +1,5 @@
+import { type KV, list, read, write } from 'worktop/cfw.kv';
 import { BalanceData, Context, UUID } from './types';
-import { list, read, write } from 'worktop/cfw.kv';
 import { define, start } from 'worktop/cfw';
 import { Router, compose } from 'worktop';
 import { reply } from 'worktop/response';
@@ -43,6 +43,20 @@ API.add('GET', '/', async (req, ctx) => {
     }
 
     return reply(200, people);
+});
+
+API.add('GET', '/username/:uuid', async (req, ctx) => {
+    const uuid = ctx.params.uuid;
+
+    const existing = await read<string>(ctx.bindings.USERNAMES, uuid, 'text');
+    if (existing) return reply(200, existing);
+
+    const res = await fetch(`https://api.minetools.eu/uuid/${uuid}`);
+    const data: { name: string } = await res.json();
+
+    await write<string>(ctx.bindings.USERNAMES, uuid, data.name);
+
+    return reply(200, data.name);
 });
 
 export default define<Context['bindings']>({

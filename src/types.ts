@@ -4,6 +4,7 @@ import type { KV } from 'worktop/cfw.kv';
 export interface Context extends DefaultContext {
     bindings: {
         BALANCES: KV.Namespace;
+        USERNAMES: KV.Namespace;
     };
 }
 
