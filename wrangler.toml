@@ -4,7 +4,9 @@ name = "CHANGE_ME"
 account_id = "44321e1b7fbd29b56b65c1890a3bbee2"
 compatibility_date = "2022-11-03"
 
-kv_namespaces = []
+kv_namespaces = [
+    { binding = "BALANCES", id = "ec7934e9c0ce45a3b9041eff64321fb0" }
+]
 
 [build]
 command = "npm run build"
